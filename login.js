@@ -13,3 +13,12 @@ while (contador < intentosMax && !accesoOk) {
 
     console.log('Usuario ingresado: ' + nombre)
     console.log('Contraseña ingresada: ' + contrasena)
+
+     // Verifico si las credenciales ingresadas son correctas
+     if (nombre === nombreConst && contrasena === contrasenaConst) {
+        accesoOk = true
+        alert('Bienvenid@ ' + nombre)
+        console.log('Acceso concedido')
+    } else {
+        contador++
+        console.log('Credenciales incorrectas')
