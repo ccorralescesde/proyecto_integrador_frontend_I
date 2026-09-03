@@ -22,3 +22,13 @@ while (contador < intentosMax && !accesoOk) {
     } else {
         contador++
         console.log('Credenciales incorrectas')
+        if (contador < intentosMax) {
+            alert('Credenciales incorrectas, quedan ' + (intentosMax - contador) + ' intentos')
+        } else {
+            // Si se superan los 3 intentos, se bloquea el acceso
+            alert('Acceso bloqueado, ha superado los 3 intentos permitidos')
+            console.log('Cuenta bloqueada')
+
+        }
+    }
+}
