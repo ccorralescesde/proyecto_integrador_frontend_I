@@ -44,7 +44,7 @@ El script realiza los siguientes pasos:
 
 ## 💻 Ejemplo de Uso / Ejecución
 
-1. Copia el código en un archivo con extensión `.js` (ejemplo: `app.js`).
+1. Copia el código en un archivo con extensión `.js` (ejemplo: `login.js`).
 2. Vincula el archivo en un documento HTML básico:
    ```html
    <!DOCTYPE html>
