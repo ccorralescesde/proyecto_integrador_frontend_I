@@ -54,7 +54,7 @@ El script realiza los siguientes pasos:
        <title>Validación de Acceso</title>
    </head>
    <body>
-       <script src="app.js"></script>
+       <script src="login.js"></script>
    </body>
    </html>
    ```
