@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Notas - Sistema Académico</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+
+<body>
+    <header class="header-arriba">
+        <nav class="nav-menu">
+            <ul class="lista-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="alumnos.html">Alumnos</a></li>
+                <li><a href="profesores.html">Profesores</a></li>
+                <li><a href="registro.html" class="activo">Registro de notas</a></li>
+                <li><a href="iniciar-sesion.html">Iniciar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="titulo-principal">
+        <h1>Registro de Calificaciones</h1>
+    </section>
+
+    <section class="contenido-principal seccion-registro">
+        
+        <div class="filters-card">
+            <div class="filter-group">
+                <label class="filter-label">Curso:</label>
+                <select class="filter-select">
+                    <option>Grado 0-1-M (Matemáticas)</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Periodo:</label>
+                <select class="filter-select">
+                    <option>Periodo 2 - Progreso Académico</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="grades-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Código</th>
+                        <th class="text-left">Nombre Completo</th>
+                        <th>Nota 1</th>
+                        <th>Nota 2</th>
+                        <th>Nota 3</th>
+                        <th>Examen</th>
+                        <th>Promedio</th>
+                        <th>Faltas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>20121</td>
+                        <td class="text-left">Alvarez Perez Jesus</td>
+                        <td><input type="text" value="3.6" class="grade-input"></td>
+                        <td><input type="text" value="3.2" class="grade-input"></td>
+                        <td><input type="text" value="4.3" class="grade-input"></td>
+                        <td><input type="text" value="3.0" class="grade-input"></td>
+                        <td class="average-cell">3.5</td>
+                        <td><input type="text" value="0" class="faltas-input"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>21323</td>
+                        <td class="text-left">Aguirre Montoya Julian</td>
+                        <td><input type="text" value="4.1" class="grade-input"></td>
+                        <td><input type="text" value="2.8" class="grade-input"></td>
+                        <td><input type="text" value="3.4" class="grade-input"></td>
+                        <td><input type="text" value="3.6" class="grade-input"></td>
+                        <td class="average-cell">3.4</td>
+                        <td><input type="text" value="1" class="faltas-input"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>212312</td>
+                        <td class="text-left">Echavarria Mazo Alejandra</td>
+                        <td><input type="text" value="2.8" class="grade-input"></td>
+                        <td><input type="text" value="5.0" class="grade-input"></td>
+                        <td><input type="text" value="3.8" class="grade-input"></td>
+                        <td><input type="text" value="3.4" class="grade-input"></td>
+                        <td class="average-cell">3.7</td>
+                        <td><input type="text" value="0" class="faltas-input"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="acciones-inferiores">
+            <a href="index.html" class="boton-iniciar btn-salir">Salir</a>
+            <a href="#" class="boton-iniciar" id="btnGuardar">Guardar cambios</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="contenedor-footer">
+            <div class="columna-footer">
+                <h3>Plataforma educativa</h3>
+                <p>© 2026 Sistema Académico. Todos los derechos reservados.</p>
+            </div>
+            <div class="columna-footer">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="alumnos.html">Alumnos</a></li>
+                    <li><a href="profesores.html">Profesores</a></li>
+                    <li><a href="iniciar-sesion.html">Iniciar sesión</a></li>
+                </ul>
+            </div>
+            <div class="columna-footer">
+                <h3>Soporte</h3>
+                <ul>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
