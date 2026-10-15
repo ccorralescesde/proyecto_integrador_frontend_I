@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Iniciar sesión</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="favicon/imgfavicon.jfif">
+</head>
+
+<body>
+
+
+
+    <nav class="botonesBaraLogin">
+        <a class="boton_login" href="inicio">Inicio</a>
+        <a class="boton_login" href="caracteristicas">Características</a>
+        <a class="boton_login" href="precios">Precios</a>
+        <a class="boton_login" href="contacto">Contacto</a>
+    </nav>
+
+
+   
+
+    <main class="contener">
+
+
+        <form class="formulario-login">
+
+            <section class="iniciar-sesion">
+                <h1>Iniciar sesión</h1>
+            </section>
+
+            <label for="userName">Usuario:</label>
+            <input
+                type="text" id="userName" name="usuario" placeholder="usuario@correo.com" required>
+
+            <label for="userPassword">Contraseña:</label>
+            <input  type="password" id="userPassword" name="contraseña" placeholder="**********"  required>
+
+            <button type="button" id="btnAcceso">Iniciar sesión</button>
+
+            <p id="mensajeAlerta" style="margin-top: 15px; font-weight: bold;"></p>
+
+        </form>
+
+        <img src="img/imagen1.jpg" class="img-teacher" alt="Imagen de bienvenida">
+
+    </main>
+    <script src="proyecto.js"></script>
+</body>
+
+</html>
