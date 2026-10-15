@@ -33,29 +33,31 @@
             <option value="" disabled selected>Seleccione tipo de usuario</option>
             <option value="estudiante">Estudiante</option>
             <option value="docente">Docente</option>
-            <option value="administrador">Administrador</option>
+            <option value="administrador" required>Administrador</option>
           </select>
         </div>
         <div class="grupo-formulario">
           <label for="nombre">Nombres</label>
-          <input type="text" placeholder="Ana" />
+          <input type="text" placeholder="Ana" required/>
         </div>
         <div class="grupo-formulario">
           <label for="apellidos">Apellidos</label>
-          <input type="text" placeholder="Lopéz" />
+          <input type="text" placeholder="Lopéz" required />
         </div>
         <div class="grupo-formulario">
           <label for="email">Correo electronico</label>
-          <input type="email" placeholder="alopez@example.com" />
+          <input type="email" placeholder="alopez@example.com" required />
         </div>
         <div class="grupo-formulario">
           <label for="password">Contraseña</label>
-          <input type="password" placeholder="********" />
+          <input type="password" placeholder="********" required />
         </div>
         <div class="grupo-formulario">
           <label for="password">Confirmar Contraseña</label>
-          <input type="password" placeholder="********" />
+          <input type="password" placeholder="********" required />
         </div>
+        <a href="Bienvenido.html" class="boton-iniciar">Regresar</a>
+        <br>
         <button type="submit" class="boton-iniciar">Registrar usuario</button>
       </div>
     </form>

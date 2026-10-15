@@ -73,8 +73,8 @@ body *::after {
     font-size: 24px;
     font-weight: bold;
     color: #172554;
-    margin: 0;
-    padding: 100px 20px 20px;
+    margin: 2%;
+    padding: 50px 15px 15px;
     text-align: center;
 }
 
@@ -136,9 +136,7 @@ body *::after {
     border-radius: 10px;
 }
 
-/* =====================================================
-   4. BOTONES Y COMPONENTES COMUNES
-   ===================================================== */
+/* 4. BOTONES Y COMPONENTES COMUNES*/
 .boton-iniciar,
 .button {
     background-color: #2563eb;
@@ -196,7 +194,7 @@ body *::after {
 .formulario-login label {
     font-size: 15px;
     font-weight: bold;
-    color: #ffffff; /* Cambia a #172554 si tu contenedor es de fondo claro */
+    color: #ffffff; 
     margin-top: 5px;
 }
 
@@ -271,7 +269,9 @@ body *::after {
     background-color: #f8fafc;
     border: 1px solid #cbd5e1;
     border-radius: 8px;
+    outline:  none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    appearance: none;
 }
 
 .grupo-formulario input:focus,
@@ -415,6 +415,82 @@ body *::after {
 .faltas-input:focus {
     border-color: #1e3a8a;
 }
+
+/* Permite que el contenedor principal de notas apile los elementos verticalmente */
+.contenido-principal.seccion-registro {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: calc(100% - 40px);
+    max-width: 1200px;
+    margin: 25px auto 40px;
+    padding: 30px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(23, 37, 84, 0.08);
+}
+
+.filters-card {
+    background-color: #f8fafc;
+    padding: 1.2rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 220px;
+}
+
+.filter-label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    color: #172554;
+}
+
+.filter-select {
+    padding: 0.6rem;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    background-color: #fff;
+    font-size: 0.95rem;
+    color: #263248;
+    outline: none;
+    cursor: pointer;
+}
+
+.filter-select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Alineación de acciones inferiores (Botones Salir / Guardar) */
+.acciones-inferiores {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 10px;
+}
+
+.btn-salir {
+    background-color: #64748b;
+}
+
+.btn-salir:hover {
+    background-color: #475569;
+    box-shadow: 0 4px 10px rgba(100, 116, 139, 0.22);
+}
+
+
 
 /* 9. FOOTER (PIE DE PÁGINA)*/
 .footer {
@@ -578,6 +654,8 @@ body *::after {
     scroll-behavior: smooth;
     scrollbar-color: #93aee8 #e8edf7;
     scrollbar-width: thin;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .servicios-card {
