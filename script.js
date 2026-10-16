@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (inputsNotas.length > 0 && celdaPromedio) {
             inputsNotas.forEach((input) => {
-                input.addEventListener("input", () => {
+                input.add   EventListener("input", () => {
                     let suma = 0;
                     let cantidad = 0;
 
@@ -138,17 +138,22 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ==========================================================================
      * 4. CONTROL DE SESIÓN Y CARGA DE RESULTADOS (Bienvenido.html)
      * ========================================================================== */
-    const botonCerrarSesion = document.querySelector(".CerrarSe");
+    const btnCerrarSesion = document.querySelector(".CerrarSe");
 
-    if (botonCerrarSesion) {
-        botonCerrarSesion.addEventListener("click", (e) => {
+    if (btnCerrarSesion) {
+        btnCerrarSesion.addEventListener("click", (e) => {
             e.preventDefault();
+            const confirmar = confirm("¿Estás seguro de que deseas cerrar sesión?");
             
-            localStorage.removeItem("usuarioLogueado");
-            localStorage.removeItem("nombreUsuario");
-
-            alert("Has cerrado sesión correctamente.");
-            window.location.href = "login.html";
+            if (confirmar) {
+                // se limpian datos en caso d eque se usaron 
+                localStorage.clear();
+                alert("Sesión cerrada correctamente.");
+                window.location.href = "login.html";
+                
+                //  esto puede redicinar a una ventana de login
+             
+            }
         });
     }
 
