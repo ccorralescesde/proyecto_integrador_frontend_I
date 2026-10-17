@@ -691,3 +691,15 @@ body *::after {
     font-size: 14px;
     margin: 0 0 20px;
 }
+.mensaje-alerta {
+    margin-top: 15px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+input[type="submit"]:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    border-color: #999999;
+}

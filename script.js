@@ -4,33 +4,62 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  
+
     /* ==========================================================================
      * 1. INTERACTIVIDAD EN EL INICIO DE SESIÓN (login.html)
      * ========================================================================== */
-    const formularioLogin = document.querySelector(".formulario-login");
 
-    if (formularioLogin) {
-        formularioLogin.addEventListener("submit", (evento) => {
-            evento.preventDefault();
+    const form = document.getElementById("formulario");
 
+    if (form) {
+        let contador = 0;
+        const maximos = 3;
+        let accesoOk = false;
 
-            const usuarioInput = document.getElementById("userName").value.trim(); 
-            const passwordInput = document.getElementById("userPassword").value.trim();
+        const nombreConst = "ocuadrado@cesde.net";
+        const contrasenaConst = "12345";
 
-            if (usuarioInput === "" || passwordInput === "") {
-                alert("Por favor, completa todos los campos para iniciar sesión.");
+        const usuarioIngresado = document.getElementById("userName");
+        const contrasenaIngresada = document.getElementById("userPassword");
+        const abtAcceso = document.getElementById("btnAcceso");
+        const mensajeAlerta = document.getElementById("mensajeAlerta");
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            if (accesoOk || contador >= maximos) {
                 return;
             }
 
-            localStorage.setItem("usuarioLogueado", "true");
-            localStorage.setItem("nombreUsuario", usuarioInput);
+            const valorUsuario = usuarioIngresado.value.trim();
+            const valorContrasena = contrasenaIngresada.value;
 
-            alert(`¡Bienvenido de nuevo, ${usuarioInput}!`);
-            window.location.href = "Bienvenido.html";
+            if (valorUsuario === nombreConst && valorContrasena === contrasenaConst) {
+                accesoOk = true;
+
+                localStorage.setItem("usuarioAutenticado", "true");
+                localStorage.setItem("nombreUsuario", valorUsuario);
+
+                window.location.href = "Bienvenido.html";
+            } else {
+                contador++;
+                const restantes = maximos - contador;
+
+                if (contador < maximos) {
+                    mensajeAlerta.textContent = `Credenciales incorrectas, intentos restantes ${restantes}`;
+                    mensajeAlerta.style.color = "orange";
+                } else {
+                    mensajeAlerta.textContent =
+                        "Cuenta bloqueada por superar el límite de intentos permitidos";
+                    mensajeAlerta.style.color = "red";
+
+                    abtAcceso.disabled = true;
+                    usuarioIngresado.disabled = true;
+                    contrasenaIngresada.disabled = true;
+                }
+            }
         });
     }
-
 
     // Cargar el nombre de usuario en la pantalla de Bienvenida portal academico
 
@@ -41,6 +70,33 @@ document.addEventListener("DOMContentLoaded", () => {
         tituloBienvenida.textContent = `Hola, ${nombreGuardado}`;
     }
 
+    // Simulación de métricas del estudiante
+    const datosEstudiante = {
+        materiasMatriculadas: 6,
+        promedioAcademico: "4.3",
+        asistenciaGeneral: "92%",
+    };
+
+    const cardNumbers = document.querySelectorAll(".card .number");
+    if (cardNumbers.length >= 3) {
+        cardNumbers[0].textContent = datosEstudiante.materiasMatriculadas;
+        cardNumbers[1].textContent = datosEstudiante.promedioAcademico;
+        cardNumbers[2].textContent = datosEstudiante.asistenciaGeneral;
+    }
+
+    const btnCerrarSesion = document.querySelector(".CerrarSe");
+    if (btnCerrarSesion) {
+        btnCerrarSesion.addEventListener("click", (e) => {
+            e.preventDefault();
+            const confirmar = confirm("¿Estás seguro de que deseas cerrar sesión?");
+
+            if (confirmar) {
+                localStorage.clear();
+                alert("Sesión cerrada correctamente.");
+                window.location.href = "login.html";
+            }
+        });
+    }
 
 
 
@@ -55,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (inputsNotas.length > 0 && celdaPromedio) {
             inputsNotas.forEach((input) => {
-                input.add   EventListener("input", () => {
+                input.addEventListener("input", () => {
                     let suma = 0;
                     let cantidad = 0;
 
@@ -135,41 +191,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* ==========================================================================
-     * 4. CONTROL DE SESIÓN Y CARGA DE RESULTADOS (Bienvenido.html)
-     * ========================================================================== */
-    const btnCerrarSesion = document.querySelector(".CerrarSe");
-
-    if (btnCerrarSesion) {
-        btnCerrarSesion.addEventListener("click", (e) => {
-            e.preventDefault();
-            const confirmar = confirm("¿Estás seguro de que deseas cerrar sesión?");
-            
-            if (confirmar) {
-                // se limpian datos en caso d eque se usaron 
-                localStorage.clear();
-                alert("Sesión cerrada correctamente.");
-                window.location.href = "login.html";
-                
-                //  esto puede redicinar a una ventana de login
-             
-            }
-        });
-    }
-
-    // NUEVO: Rellenar automáticamente los resultados numéricos en las tarjetas de Bienvenido.html
-    const tarjetasBienvenido = document.querySelectorAll(".Bienvenido ~ .cards .card .number");
-    
-    if (tarjetasBienvenido.length >= 3) {
-        // Tarjeta 1: Materias matriculadas (Simulamos un valor fijo o dinámico de 4 materias)
-        tarjetasBienvenido[0].textContent = "4"; 
-
-        // Tarjeta 2: Promedio académico general (Calculado dinámicamente o establecido en 3.6)
-        tarjetasBienvenido[1].textContent = "3.6"; 
-
-        // Tarjeta 3: Porcentaje o total de asistencia (Ej. 95% o conteo general)
-        tarjetasBienvenido[2].textContent = "95%"; 
-    }
 });
 
 
