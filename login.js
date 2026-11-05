@@ -1,3 +1,4 @@
+//Codigo realizado en la primera entrega del proyecto integrador
 // Declaro constantes y credenciales a validar.
 const nombreConst = 'usuario'
 const contrasenaConst = '1234'
