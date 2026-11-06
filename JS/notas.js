@@ -1,6 +1,7 @@
-/* ==========================================================================
-     * 2. CÁLCULO DINÁMICO DE PROMEDIOS EN TIEMPO REAL (notas.html)
-     * ========================================================================== */
+/** 
+     2. CÁLCULO DINÁMICO DE PROMEDIOS EN TIEMPO REAL (notas.html)
+      */
+     
     const filasNotas = document.querySelectorAll(".grades-table tbody tr");
 
     filasNotas.forEach((fila) => {

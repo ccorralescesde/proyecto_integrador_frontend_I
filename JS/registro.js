@@ -1,4 +1,5 @@
-  const formularioRegistro = document.querySelector(".formulario-registro");
+  document.addEventListener("DOMContentLoaded", () => {
+    const formularioRegistro = document.querySelector(".formulario-registro");
 
     if (formularioRegistro) {
         formularioRegistro.addEventListener("submit", (e) => {
