@@ -22,14 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
         btnCerrarSesion.addEventListener("click", (e) => {
             e.preventDefault();
             const confirmar = confirm("¿Estás seguro de que deseas cerrar sesión?");
+        if (confirmar) {
+        // se limpian datos en caso d eque se usaron
+        localStorage.removeItem("usuarioAutenticado");
+        localStorage.removeItem("nombreUsuario");
+        window.location.href = "login.html";
+
             
-            if (confirmar) {
-                // se limpian datos en caso d eque se usaron 
-                localStorage.clear();
-                alert("Sesión cerrada correctamente.");
-                
-       
-             
             }
         });
     }
