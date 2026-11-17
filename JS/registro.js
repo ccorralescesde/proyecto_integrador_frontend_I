@@ -1,30 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
   const formularioRegistro = document.querySelector(".formulario-registro");
 
-  const listausuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
-async function iniciarApp() {
-  try {
-    const response = await fetch("usuarios.json");
-     const usuariosIniciales = await response.json();
-
-    console.log("Status del fetch:", response.status);
-
-    console.log("Usuarios cargados:", usuariosIniciales);
-
+  // Función para iniciar la aplicación y cargar usuarios desde 
+  // un archivo JSON si no existen en localStorage
+  async function iniciarApp() {
     if (!localStorage.getItem("listausuarios")) {
+      try {
+        const response = await fetch("usuarios.json");
+        const usuariosIniciales = await response.json();
+        localStorage.setItem("listausuarios", JSON.stringify(usuariosIniciales));
+        console.log("Status del fetch:", response.status);
+        console.log("Usuarios cargados:", usuariosIniciales);
       localStorage.setItem("listausuarios", JSON.stringify(usuariosIniciales));
-    }
-
-  
-
-  } catch (error) {
+    } catch (error) {
     console.error("Error en iniciarApp:", error);
-
+    }
+    iniciarApp();
   }
 }
-// Llamada a la función para arrancar todo
-iniciarApp();
-
 
   if (formularioRegistro) {
     formularioRegistro.addEventListener("submit", (e) => {
@@ -63,6 +56,41 @@ iniciarApp();
 
       alert("¡Usuario registrado con éxito en la plataforma!");
       formularioRegistro.reset();
+
+
+// Capturar los datos del formulario de registro y guardarlos en localStorage
+const nombre = formularioRegistro.querySelector("input[type='text']");
+const email = formularioRegistro.querySelector("input[type='email']");
+const password = passwords[0].value.trim();
+
+//Obtenemos la lista de usuarios desde localStorage, si no existe, inicializamos un array vacío
+  const listausuarios = JSON.parse(localStorage.getItem("listausuarios") || "[]");
+
+  //verificamos si el correo ya está registrado
+const usuarioExistente = listausuarios.find(user => user.email === email.value.trim());
+if (usuarioExistente) {
+  alert("El correo electrónico ya está registrado. Por favor, utiliza otro.");
+  return;
+}
+
+// Creamos un nuevo objeto de usuario con los datos del formulario
+  const nuevoUsuario = {
+    nombre : nombre.value.trim(),
+    email : email.value.trim(),
+    password : password,
+    tipo : tipoUsuario
+  };
+
+  // Agregamos el nuevo usuario a la lista y la guardamos en localStorage
+  listausuarios.push(nuevoUsuario);
+  localStorage.setItem("listausuarios", JSON.stringify(listausuarios));
+
+  alert("¡Usuario registrado con éxito!");
+  formularioRegistro.reset();
+
+  window.location.href = "login.html";
     });
   }
 });
+
+

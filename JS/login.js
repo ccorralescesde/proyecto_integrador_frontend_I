@@ -5,8 +5,26 @@ const listausuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
 
 let contador = 0;
 let intentosMax = 3;
+// Función para iniciar la aplicación y cargar usuarios desde un archivo 
+// JSON si no existen en localStorage
+async function iniciarApp() {
+    if (!localStorage.getItem("listausuarios")) {
+      try {
+        const response = await fetch("usuarios.json");
+        const usuariosIniciales = await response.json();
+        localStorage.setItem("listausuarios", JSON.stringify(usuariosIniciales));
+        console.log("Status del fetch:", response.status);
+        console.log("Usuarios cargados:", usuariosIniciales);
+      localStorage.setItem("listausuarios", JSON.stringify(usuariosIniciales));
+    } catch (error) {
+    console.error("Error en iniciarApp:", error);
+    }
+  }
+}
 
 window.addEventListener("DOMContentLoaded", () => {
+  iniciarApp();
+
   const estaAutenticado = localStorage.getItem("usuarioAutenticado");
   if (estaAutenticado === "true") {
     window.location.href = "Bienvenido.html";
@@ -37,15 +55,9 @@ formulario.addEventListener("submit", (e) => {
     return;
   }
 
-  /* 3. Verificar si existe un usuario registrado en localStorage
-  const usuarioGuardadoJSON = localStorage.getItem("usuarioRegistrado");
+  // leer la lista mas reciente de usuarios desde localStorage
+  const listausuarios = JSON.parse(localStorage.getItem("listausuarios") || "[]");
 
-  if (!usuarioGuardadoJSON) {
-    alert("Usuario no registrado.");
-    return;
-  }
-
-  const usuarioGuardado = JSON.parse(usuarioGuardadoJSON);*/
 
   setTimeout(() => {
 
@@ -56,11 +68,11 @@ formulario.addEventListener("submit", (e) => {
       localStorage.setItem("usuarioAutenticado", "true");
       localStorage.setItem("nombreUsuario", usuariosEncontrado.nombre);
 
-      mensajeAlerta.textContent = "Acceso concedido. Entrando...";
+      mensajeAlerta.textContent = "Acceso concedido.";
       window.location.href = "Bienvenido.html";
     } else {
       contador++;
-      console.log("Credenciales incorrectas");
+      alert("Credenciales incorrectas");
 
       if (contador < intentosMax) {
         alert(
