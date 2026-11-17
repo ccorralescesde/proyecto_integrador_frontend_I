@@ -1,5 +1,8 @@
 //Codigo realizado en la primera entrega del proyecto integrador
 // Código de inicio de sesión
+
+const listausuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
+
 let contador = 0;
 let intentosMax = 3;
 
@@ -11,14 +14,14 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 const formulario = document.querySelector("#formulario");
-const inputNombre = document.querySelector("#nombre");
+const inputUsuario = document.querySelector("#userName");
 const inputPassword = document.querySelector("#userPassword");
 const mensajeAlerta = document.querySelector("#mensajeAlerta");
 
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const correoIngresado = inputNombre.value.trim();
+  const correoIngresado = inputUsuario.value.trim();
   const passwordIngresado = inputPassword.value.trim();
 
   // 1. Validar campos vacíos
@@ -34,7 +37,7 @@ formulario.addEventListener("submit", (e) => {
     return;
   }
 
-  // 3. Verificar si existe un usuario registrado en localStorage
+  /* 3. Verificar si existe un usuario registrado en localStorage
   const usuarioGuardadoJSON = localStorage.getItem("usuarioRegistrado");
 
   if (!usuarioGuardadoJSON) {
@@ -42,17 +45,16 @@ formulario.addEventListener("submit", (e) => {
     return;
   }
 
-  const usuarioGuardado = JSON.parse(usuarioGuardadoJSON);
+  const usuarioGuardado = JSON.parse(usuarioGuardadoJSON);*/
 
   setTimeout(() => {
+
     // 4. Comparamos el correo y la contraseña correctos
-    if (
-      correoIngresado === usuarioGuardado.correo &&
-      passwordIngresado === usuarioGuardado.password
-    ) {
+  const usuariosEncontrado = listausuarios.find( user => user.email === correoIngresado && user.password === passwordIngresado);
+    if ( usuariosEncontrado ) {
       // Guardar indicadores de sesión activa (usamos el nombre guardado del objeto para saludar después)
       localStorage.setItem("usuarioAutenticado", "true");
-      localStorage.setItem("nombreUsuario", usuarioGuardado.nombre);
+      localStorage.setItem("nombreUsuario", usuariosEncontrado.nombre);
 
       mensajeAlerta.textContent = "Acceso concedido. Entrando...";
       window.location.href = "Bienvenido.html";
