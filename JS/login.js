@@ -1,8 +1,6 @@
 //Codigo realizado en la primera entrega del proyecto integrador
 // Código de inicio de sesión
 
-const listausuarios = JSON.parse(localStorage.getItem("listausuarios") || "[]");
-
 let contador = 0;
 let intentosMax = 3;
 // Función para iniciar la aplicación y cargar usuarios desde un archivo 
@@ -72,7 +70,6 @@ formulario.addEventListener("submit", (e) => {
       window.location.href = "Bienvenido.html";
     } else {
       contador++;
-      alert("Credenciales incorrectas");
 
       if (contador < intentosMax) {
         alert(

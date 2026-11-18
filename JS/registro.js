@@ -24,10 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
 
       const tipoUsuario = document.getElementById("tipo-usuario").value;
-      const inputsRegistro = formularioRegistro.querySelectorAll("input");
+      const inputRegistro = formularioRegistro.querySelectorAll("input");
 
       let camposCompletos = true;
-      inputsRegistro.forEach((input) => {
+      inputRegistro.forEach((input) => {
         if (input.value.trim() === "") {
           camposCompletos = false;
         }
@@ -55,15 +55,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 // Capturar los datos del formulario de registro y guardarlos en localStorage
-const nombre = formularioRegistro.querySelector("input[type='text']");
-const email = formularioRegistro.querySelector("input[type='email']");
-const password = passwords[0].value.trim();
-
+const nombre = document.getElementById("nombre").value.trim();
+const email = document.getElementById("email").value.trim();
+const password = document.getElementById("password").value.trim();
 //Obtenemos la lista de usuarios desde localStorage, si no existe, inicializamos un array vacío
   const listausuarios = JSON.parse(localStorage.getItem("listausuarios") || "[]");
 
   //verificamos si el correo ya está registrado
-const usuarioExistente = listausuarios.find(user => user.email === email.value.trim());
+const usuarioExistente = listausuarios.find(user => user.email === email);
 if (usuarioExistente) {
   alert("El correo electrónico ya está registrado. Por favor, utiliza otro.");
   return;
@@ -71,8 +70,8 @@ if (usuarioExistente) {
 
 // Creamos un nuevo objeto de usuario con los datos del formulario
   const nuevoUsuario = {
-    nombre : nombre.value.trim(),
-    email : email.value.trim(),
+    nombre : nombre,
+    email : email,
     password : password,
     tipo : tipoUsuario
   };
