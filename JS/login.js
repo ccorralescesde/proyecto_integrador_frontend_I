@@ -1,7 +1,7 @@
 //Codigo realizado en la primera entrega del proyecto integrador
 // Código de inicio de sesión
 
-const listausuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
+const listausuarios = JSON.parse(localStorage.getItem("listausuarios") || "[]");
 
 let contador = 0;
 let intentosMax = 3;
@@ -51,7 +51,7 @@ formulario.addEventListener("submit", (e) => {
   // 2. Validar formato de correo
   if (!correoIngresado.includes("@")) {
     alert("Por favor, ingresa un correo electrónico válido que contenga '@'.");
-    inputNombre.focus();
+    inputUsuario.focus();
     return;
   }
 

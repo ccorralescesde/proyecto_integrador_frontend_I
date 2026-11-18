@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const formularioRegistro = document.querySelector(".formulario-registro");
+  const formularioRegistro = document.getElementById("formulario-registro");
 
   // Función para iniciar la aplicación y cargar usuarios desde 
   // un archivo JSON si no existen en localStorage
@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
     console.error("Error en iniciarApp:", error);
     }
-    iniciarApp();
   }
 }
+ iniciarApp();
 
   if (formularioRegistro) {
     formularioRegistro.addEventListener("submit", (e) => {
@@ -49,14 +49,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (passwords.length >= 2) {
         if (passwords[0].value !== passwords[1].value) {
           alert("Las contraseñas no coinciden. Por favor verifícalas.");
-          passwords[1].focus();
+          passwords[1].focus(); 
           return;
         }
       }
-
-      alert("¡Usuario registrado con éxito en la plataforma!");
-      formularioRegistro.reset();
-
 
 // Capturar los datos del formulario de registro y guardarlos en localStorage
 const nombre = formularioRegistro.querySelector("input[type='text']");
